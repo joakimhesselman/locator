@@ -112,4 +112,49 @@ document.addEventListener('DOMContentLoaded', () => {
         errorElement.style.display = 'block';
         distanceElement.textContent = 'Cannot calculate distance.';
     }
+    // (Inside the script.js file from the previous response)
+
+// ... other functions (degreesToRadians, calculateDistance, etc.) ...
+
+function updatePosition(position) {
+    // This function gets called AUTOMATICALLY by watchPosition
+    // whenever a new location is available.
+    const userLat = position.coords.latitude;
+    const userLon = position.coords.longitude;
+
+    errorElement.textContent = '';
+    errorElement.style.display = 'none';
+    distanceElement.style.display = 'block';
+
+    const dist = calculateDistance(userLat, userLon, TARGET_LAT, TARGET_LON);
+    distanceElement.textContent = `Distance: ${dist.toFixed(1)} km`; // Updated distance
+
+    const bearing = calculateBearing(userLat, userLon, TARGET_LAT, TARGET_LON);
+    if (arrowContainer) {
+        arrowContainer.style.transform = `rotate(${bearing}deg)`; // Updated arrow rotation
+    }
+    // console.log('Position Updated:', userLat, userLon, 'Bearing:', bearing); // Uncomment for debugging
+}
+
+function handleError(error) {
+    // ... error handling code ...
+}
+
+// Check if Geolocation is supported
+if ('geolocation' in navigator) {
+    const geoOptions = {
+        enableHighAccuracy: true, // More accurate, potentially more power-hungry
+        timeout: 10000,
+        maximumAge: 0 // Force fresh location data
+    };
+
+    // THIS IS THE KEY LINE FOR REAL-TIME UPDATES:
+    // It sets up the continuous monitoring.
+    navigator.geolocation.watchPosition(updatePosition, handleError, geoOptions);
+
+    distanceElement.textContent = 'Acquiring location...';
+
+} else {
+    // ... geolocation not supported error handling ...
+}
 });
