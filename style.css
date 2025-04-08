@@ -1,0 +1,124 @@
+/* Basic Reset & Neo-Brutalist Foundation */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Roboto Mono', monospace; /* Monospace font for a slightly technical feel */
+    background-color: #ffffff; /* Stark white background */
+    color: #000000; /* Pure black text */
+    line-height: 1.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 15px; /* Prevent content touching edges */
+}
+
+/* Main Container */
+.container {
+    border: 3px solid #000000; /* Thick black border */
+    padding: 20px 30px 30px 30px;
+    max-width: 450px;
+    width: 100%;
+    box-shadow: 8px 8px 0px #e6e6e6; /* Hard shadow effect */
+    background-color: #ffffff; /* Ensure container bg is distinct if body bg changes */
+}
+
+/* Header */
+header h1 {
+    font-size: 1.8em; /* Bold, large title */
+    margin-bottom: 25px;
+    border-bottom: 3px solid #000000; /* Separator */
+    padding-bottom: 15px;
+    line-height: 1.2;
+    word-break: break-word;
+}
+
+/* Compass */
+.compass {
+    width: 180px; /* Size of the compass */
+    height: 180px;
+    border: 3px solid #000000; /* Thick border */
+    border-radius: 50%; /* Circular compass */
+    margin: 20px auto;
+    position: relative; /* For positioning arrow and marker */
+    background-color: #f0f0f0; /* Slight contrast */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.north-marker {
+    position: absolute;
+    top: 5px; /* Position 'N' at the top */
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: bold;
+    font-size: 0.8em;
+    color: #555;
+}
+
+/* Arrow Container - Handles Rotation */
+.arrow-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.5s ease-out; /* Smooth rotation */
+    transform-origin: center center; /* Rotate around the center */
+}
+
+/* Arrow Styling */
+.arrow {
+    font-size: 4em; /* Large arrow character */
+    color: #FF0000; /* Bright, high-contrast color (e.g., red) */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) translateY(-15%); /* Center arrow and adjust vertical position */
+    line-height: 1;
+    text-shadow: 2px 2px 0px #000000; /* Hard shadow on arrow */
+}
+
+/* Info Text (Distance, Coords, Error) */
+.info {
+    margin-top: 20px;
+}
+
+#distance {
+    font-size: 1.4em; /* Prominent distance */
+    font-weight: bold;
+    margin-bottom: 10px;
+    min-height: 1.5em; /* Prevent layout shift while loading */
+    color: #0000FF; /* Different color for distance */
+}
+
+.coords-info {
+    font-size: 0.8em;
+    color: #555; /* Subdued color for fixed coords */
+    margin-bottom: 15px;
+}
+
+.error-message {
+    color: #FF0000; /* Error color */
+    font-weight: bold;
+    margin-top: 15px;
+    border: 2px dashed #FF0000;
+    padding: 5px;
+    display: none; /* Hidden by default */
+    background-color: #fff0f0;
+}
+
+/* Footer */
+footer {
+    margin-top: 30px;
+    font-size: 0.8em;
+    border-top: 2px dashed #000000; /* Dashed separator */
+    padding-top: 10px;
+    color: #333;
+}
