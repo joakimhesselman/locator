@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const errorElement = document.getElementById('error');
 
     // --- TARGET COORDINATES ---
-    const TARGET_LAT = 59.31057618707363;
-    const TARGET_LON = 17.98619523124271;
+    const TARGET_LAT = 59.31088391142848;
+    const TARGET_LON = 18.006552217743405;
     // --------------------------
 
     function degreesToRadians(degrees) {
